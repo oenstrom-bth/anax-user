@@ -1,5 +1,5 @@
 {
-    "name": "anax/user",
+    "name": "oenstrom/anax-user",
     "type": "library",
     "description": "An user module for the Anax framework.",
     "keywords": ["user", "framework", "mvc", "micro", "education"],
