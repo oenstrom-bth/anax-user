@@ -1,5 +1,5 @@
 {
-    "name": "oenstrom/anax-user",
+    "name": "oenstrom/user",
     "type": "library",
     "description": "An user module for the Anax framework.",
     "keywords": ["user", "framework", "mvc", "micro", "education"],
@@ -17,7 +17,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Anax\\": "src/"
+            "Anax\\": "src/",
+            "Oenstrom\\": "src/"
         }
     },
     "require": {
