@@ -106,6 +106,6 @@ class RegisterForm extends FormModel
         $user->email = $this->form->value("email");
         $user->save();
         $this->form->addOutput("Kontot har skapats.", "success");
-        $this->di->get("response")->redirect($this->di->get("request")->getRoute());
+        $this->di->get("response")->redirect("user/register");
     }
 }

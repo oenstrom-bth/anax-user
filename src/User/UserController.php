@@ -2,8 +2,6 @@
 
 namespace Oenstrom\User;
 
-use \Anax\Configure\ConfigureInterface;
-use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\DI\InjectionAwareTrait;
 use \Oenstrom\User\HTMLForm\LoginForm;
@@ -14,11 +12,9 @@ use \Oenstrom\User\HTMLForm\ProfileForm;
 /**
  * A User controller class.
  */
-class UserController implements
-    ConfigureInterface,
-    InjectionAwareInterface
+class UserController implements InjectionAwareInterface
 {
-    use ConfigureTrait, InjectionAwareTrait;
+    use InjectionAwareTrait;
 
 
 
@@ -47,7 +43,7 @@ class UserController implements
             "form" => $form->getHTML(["use_buttonbar" => false]),
             "title" => $title,
         ];
-        $view->add("user/user-form", $data);
+        $view->add("user/user-register", $data);
         $pageRender->renderPage(["title" => $title]);
     }
 
@@ -70,7 +66,7 @@ class UserController implements
         $data = [
             "form" => $form->getHTML(["use_fieldset" => false, "use_buttonbar" => false]),
         ];
-        $view->add("user/login", $data);
+        $view->add("user/user-login", $data);
         $pageRender->renderPage(["title" => $title]);
     }
 

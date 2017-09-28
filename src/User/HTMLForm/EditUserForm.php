@@ -113,13 +113,13 @@ class EditUserForm extends FormModel
 
         if (!$isOldUsername && $user->usernameExists($username)) {
             $this->form->addOutput("Användarnamnet är upptaget.", "error");
-            $this->di->get("response")->redirect("admin/users/update/{$this->user->id}");
+            $this->di->get("response")->redirect("user/admin/users/update/{$this->user->id}");
             return false;
         }
 
         if (!$isOldEmail && $user->emailExists($email)) {
             $this->form->addOutput("E-postadressen är upptagen.", "error");
-            $this->di->get("response")->redirect("admin/users/update/{$this->user->id}");
+            $this->di->get("response")->redirect("user/admin/users/update/{$this->user->id}");
             return false;
         }
 
@@ -130,6 +130,6 @@ class EditUserForm extends FormModel
         $this->user->email = $email;
         $this->user->save();
         $this->form->addOutput("Användaren har uppdaterats.", "success");
-        $this->di->get("response")->redirect("admin/users/update/{$this->user->id}");
+        $this->di->get("response")->redirect("user/admin/users/update/{$this->user->id}");
     }
 }

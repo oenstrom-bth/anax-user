@@ -2,8 +2,6 @@
 
 namespace Oenstrom\User;
 
-// use \Anax\Configure\ConfigureInterface;
-// use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\DI\InjectionAwareTrait;
 use \Oenstrom\User\User;
@@ -11,11 +9,8 @@ use \Oenstrom\User\User;
 /**
  * A User controller class.
  */
-class AuthHelper implements
-    InjectionAwareInterface
-    // ConfigureInterface,
+class AuthHelper implements InjectionAwareInterface
 {
-    // use ConfigureTrait;
     use InjectionAwareTrait;
 
 

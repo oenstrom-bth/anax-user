@@ -2,8 +2,6 @@
 
 namespace Oenstrom\User;
 
-use \Anax\Configure\ConfigureInterface;
-use \Anax\Configure\ConfigureTrait;
 use \Anax\DI\InjectionAwareInterface;
 use \Anax\DI\InjectionAwareTrait;
 use \Oenstrom\User\HTMLForm\RegisterForm;
@@ -12,11 +10,9 @@ use \Oenstrom\User\HTMLForm\EditUserForm;
 /**
  * A User controller class.
  */
-class AdminController implements
-    ConfigureInterface,
-    InjectionAwareInterface
+class AdminController implements InjectionAwareInterface
 {
-    use ConfigureTrait, InjectionAwareTrait;
+    use InjectionAwareTrait;
 
 
     /**
@@ -37,7 +33,7 @@ class AdminController implements
         ];
 
         $view->add("user/admin/admin-links", $data);
-        $view->add("user/admin/show-users", $data);
+        $view->add("user/admin/users-show", $data);
 
         $pageRender->renderPage(["title" => $title]);
     }
@@ -61,7 +57,7 @@ class AdminController implements
             "title" => $title,
         ];
         $view->add("user/admin/admin-links", $data);
-        $view->add("user/user-form", $data);
+        $view->add("user/admin/user-create", $data);
         $pageRender->renderPage(["title" => $title]);
     }
 
@@ -86,7 +82,7 @@ class AdminController implements
             "title" => $title,
         ];
         $view->add("user/admin/admin-links", $data);
-        $view->add("user/user-form", $data);
+        $view->add("user/admin/user-edit", $data);
         $pageRender->renderPage(["title" => $title]);
     }
 
@@ -105,6 +101,6 @@ class AdminController implements
         if ($user->role !== "admin") {
             $user->delete();
         }
-        $this->di->get("response")->redirect("admin/users");
+        $this->di->get("response")->redirect("user/admin/users");
     }
 }
