@@ -1,0 +1,26 @@
+{
+    "name": "anax/user",
+    "type": "library",
+    "description": "An user module for the Anax framework.",
+    "keywords": ["user", "framework", "mvc", "micro", "education"],
+    "homepage": "https://github.com/oenstrom/anax-user/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Olof Enström",
+            "email": "olof.enstrom@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/oenstrom/anax-user/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anax\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.6"
+    }
+}
