@@ -1,6 +1,6 @@
 <div class="mdl-cell mdl-cell--8-col mdl-shadow--2dp padd-10">
     <h2>Din profil</h2>
-    <?= getGravatar($app->session->get("email"), true, 256) ?>
+    <?= $gravatar ?>
     <?= $form ?>
 </div>
 

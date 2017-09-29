@@ -16,8 +16,8 @@
                     <?php foreach ($users as $user) : ?>
                     <tr>
                         <td class="mdl-data-table__cell--non-numeric">
-                            <a href="<?= $this->url("admin/users/update/{$user->id}") ?>"><i class="material-icons">edit</i></a>
-                            <a href="<?= $this->url("admin/users/delete/{$user->id}") ?>" onclick="return confirm('Är du säker?')"><i class="material-icons">delete</i></a>
+                            <a href="<?= $this->url("user/admin/users/update/{$user->id}") ?>"><i class="material-icons">edit</i></a>
+                            <a href="<?= $this->url("user/admin/users/delete/{$user->id}") ?>" onclick="return confirm('Är du säker?')"><i class="material-icons">delete</i></a>
                         </td>
                         <td class="mdl-data-table__cell--non-numeric"><?= $user->role ?></td>
                         <td class="mdl-data-table__cell--non-numeric"><?= $user->username ?></code></td>

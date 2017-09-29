@@ -28,6 +28,7 @@
         "anax/htmlform": "^1.0",
         "anax/page": "^1.0",
         "anax/response": "^1.0",
+        "anax/request": "^1.0",
         "anax/session": "^1.0",
         "anax/view": "^1.0"
     }

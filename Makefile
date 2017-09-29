@@ -225,3 +225,15 @@ phpdoc:
 behat:
 	@$(call HELPTEXT,$@)
 	[ ! -d features ] || $(BEHAT)
+
+
+
+# target auto-config         - Automatically copy over required files to your Anax installation
+.PHONY: auto-config
+auto-config:
+	@$(call HELPTEXT,$@)
+	rsync -a config/di/* ../../../config/di/
+	rsync -a config/route/* ../../../config/route/
+	rsync -a config/database.php ../../../config/
+	rsync -a view/user ../../../view/
+	echo "Auto config is done."
