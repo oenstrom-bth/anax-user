@@ -16,7 +16,7 @@
  *
  */
 return [
-    "dsn"             => "mysql:host=localhost;dbname=olen16",
+    "dsn"             => "mysql:host=localhost;dbname=anaxuser",
     "username"        => "root",
     "password"        => null,
 
