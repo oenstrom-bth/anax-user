@@ -20,6 +20,12 @@ class User extends ActiveRecordModel
      * Columns in the table.
      *
      * @var integer $id primary key auto incremented.
+     * @var string $role not null default "user".
+     * @var string $username unique not null.
+     * @var string $password not null.
+     * @var string $email unique not null.
+     * @var timestamp $created default CURRENT_TIMESTAMP.
+     * @var timestamp $deleted default null.
      */
     public $id;
     public $role;
@@ -48,7 +54,12 @@ class User extends ActiveRecordModel
 
 
     /**
-     * AWd
+     * Check if password is correct.
+     *
+     * @param string $username the username of the user
+     * @param string $password the password of the user
+     *
+     * @return boolean true if the password match the user password, else false
      */
     public function verifyPassword($username, $password)
     {
@@ -60,6 +71,8 @@ class User extends ActiveRecordModel
 
     /**
      * Check if the username already exists in the database.
+     *
+     * @return string|null the username if it exists, else null
      */
     public function usernameExists($username)
     {
@@ -72,6 +85,7 @@ class User extends ActiveRecordModel
     /**
      * Check if the email already exists in the database.
      *
+     * @return string|null the email if it exists, else null
      */
     public function emailExists($email)
     {
@@ -82,7 +96,9 @@ class User extends ActiveRecordModel
 
 
     /**
+     * Check if the user is an admin.
      *
+     * @return boolean true if user is admin, else false
      */
     public function isAdmin()
     {

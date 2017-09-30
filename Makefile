@@ -228,12 +228,11 @@ behat:
 
 
 
-# target auto-config         - Automatically copy over required files to your Anax installation
-.PHONY: auto-config
-auto-config:
+# target: install-module     - Automatically copy over required files to your Anax installation
+.PHONY: install-module
+install-module:
 	@$(call HELPTEXT,$@)
 	rsync -a config/di/* ../../../config/di/
 	rsync -a config/route/* ../../../config/route/
 	rsync -a config/database.php ../../../config/
 	rsync -a view/user ../../../view/
-	echo "Auto config is done."

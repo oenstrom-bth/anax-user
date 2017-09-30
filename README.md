@@ -16,7 +16,7 @@ composer require oenstrom/user
 You can automatically configurate most of the module using the makefile. The makefile is located in `vendor/oenstrom/user/`, make sure you are in that directory before running the make command.
 ```
 # cd vendor/oenstrom/user
-make auto-config
+make install-module
 ```
 
 ### Manual configuration
@@ -34,13 +34,13 @@ Execute the SQL-file `sql/setup.sql` to create a new database called `anaxuser` 
 If you already have a database, just edit the SQL-file or use the SQL code below.
 ```
 CREATE TABLE User (
-    `id` 		INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    `role`		VARCHAR(20) NOT NULL DEFAULT 'user',
-    `username`	VARCHAR(80) UNIQUE NOT NULL,
-    `email`		VARCHAR(255) UNIQUE NOT NULL,
-    `password`	VARCHAR(255) NOT NULL,
-    `created`	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `deleted`	DATETIME
+    `id`        INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    `role`      VARCHAR(20) NOT NULL DEFAULT 'user',
+    `username`  VARCHAR(80) UNIQUE NOT NULL,
+    `email`     VARCHAR(255) UNIQUE NOT NULL,
+    `password`  VARCHAR(255) NOT NULL,
+    `created`   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `deleted`   DATETIME
 ) ENGINE INNODB CHARACTER SET utf8 COLLATE utf8_swedish_ci;
 
 INSERT INTO User(role, username, email, password) VALUES
@@ -57,10 +57,10 @@ user/register               Register a new account
 user/login                  Login with your account
 user/logout                 Logout from your account
 
-// Protected from unauthenticated users
+# Protected from unauthenticated users
 user/profile                Display the user profile
 
-// Protected from unauthorized users
+# Protected from unauthorized users
 user/admin/users            Display all users
 user/admin/users/add        Create a new user
 user/admin/update/:id       Update an user with the provided id
