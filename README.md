@@ -1,5 +1,12 @@
 Anax user
 ==================================
+
+[![Build Status](https://travis-ci.org/oenstrom/anax-user.svg?branch=master)](https://travis-ci.org/oenstrom/anax-user)
+[![CircleCI](https://circleci.com/gh/oenstrom/anax-user.svg?style=svg)](https://circleci.com/gh/oenstrom/anax-user)
+[![Build Status](https://scrutinizer-ci.com/g/oenstrom/anax-user/badges/build.png?b=master)](https://scrutinizer-ci.com/g/oenstrom/anax-user/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/oenstrom/anax-user/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/oenstrom/anax-user/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/oenstrom/anax-user/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/oenstrom/anax-user/?branch=master)
+
 Anax user module implementing user and admin functionality.
 
 
