@@ -90,13 +90,18 @@ class RegisterForm extends FormModel
         $user = new User();
         $user->setDb($this->di->get("db"));
 
-        if ($user->usernameExists($username)) {
+        if ($user->usernameExists($username) !== null) {
             $this->form->addOutput("Användarnamnet är upptaget.", "error");
             return false;
         }
 
-        if ($user->emailExists($email)) {
+        if ($user->emailExists($email) !== null) {
             $this->form->addOutput("E-postadressen är upptagen.", "error");
+            return false;
+        }
+
+        if (empty($username) || empty($email)) {
+            $this->form->addOutput("Fyll i fälten.", "error");
             return false;
         }
 

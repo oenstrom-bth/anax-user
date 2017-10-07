@@ -12,8 +12,9 @@ class LoginFormTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $conf = include "MockDiConfig.php";
-        $this->di = new \Anax\DI\DIFactoryConfig($conf);
+        // $conf = include "MockDiConfig.php";
+        // $this->di = new \Anax\DI\DIFactoryConfig($conf);
+        $this->di = new \Anax\DI\DIFactoryConfig("MockDi.php");
     }
 
 

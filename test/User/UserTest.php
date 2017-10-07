@@ -12,9 +12,9 @@ class UserTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->db = new MockDatabaseQueryBuilder();
+        $this->di = new \Anax\DI\DIFactoryConfig("MockDi.php");
         $this->user = new User();
-        $this->user->setDb($this->db);
+        $this->user->setDb($this->di->get("db"));
     }
 
 
@@ -37,9 +37,12 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user->find("username", "user");
         $this->assertNull($this->user->password);
 
-        $this->user->find("username", "test");
+        $this->user->find("username", "doe");
+        $oldPass = $this->user->password;
         $this->user->setPassword("test");
+
         $this->assertStringStartsWith("$2y$10", $this->user->password);
+        $this->assertNotEquals($oldPass, $this->user->password);
     }
 
 
@@ -49,8 +52,8 @@ class UserTest extends \PHPUnit_Framework_TestCase
      */
     public function testVerifyPassword()
     {
-        $this->assertFalse($this->user->verifyPassword("user", "wrong"));
-        $this->assertTrue($this->user->verifyPassword("test", "test"));
+        $this->assertFalse($this->user->verifyPassword("doe", "wrong"));
+        $this->assertTrue($this->user->verifyPassword("doe", "doe"));
     }
 
 
@@ -61,7 +64,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function testUsernameExists()
     {
         $this->assertNull($this->user->usernameExists("user"));
-        $this->assertSame($this->user->usernameExists("test"), "test");
+        $this->assertSame($this->user->usernameExists("doe"), "doe");
     }
 
 
@@ -72,7 +75,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function testEmailExists()
     {
         $this->assertNull($this->user->emailExists("invalid@email.com"));
-        $this->assertSame($this->user->emailExists("test@test.com"), "test@test.com");
+        $this->assertSame($this->user->emailExists("admin@admin.com"), "admin@admin.com");
     }
 
 
@@ -82,10 +85,10 @@ class UserTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsAdmin()
     {
-        $this->user->find("username", "user");
+        $this->user->find("username", "doe");
         $this->assertFalse($this->user->isAdmin());
 
-        $this->user->find("username", "test");
+        $this->user->find("username", "admin");
         $this->assertTrue($this->user->isAdmin());
     }
 }

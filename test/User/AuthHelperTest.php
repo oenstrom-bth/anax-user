@@ -12,8 +12,9 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $conf = include "MockDiConfig.php";
-        $this->di = new \Anax\DI\DIFactoryConfig($conf);
+        $this->di = new \Anax\DI\DIFactoryConfig("MockDi.php");
+        // $conf = include "MockDiConfig.php";
+        // $this->di = new \Anax\DI\DIFactoryConfig($conf);
     }
 
 
@@ -28,7 +29,7 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($auth->getLoggedInUser());
 
         $session = $this->di->get("session");
-        $session->set("username", "test");
+        $session->set("username", "doe");
         $this->assertInstanceOf("Oenstrom\User\User", $auth->getLoggedInUser());
     }
 
@@ -41,10 +42,12 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
     {
         $auth = new AuthHelper();
         $auth->setDi($this->di);
+        $session = $this->di->get("session");
+
+        $session->delete("username");
         $this->assertFalse($auth->isLoggedIn());
 
-        $session = $this->di->get("session");
-        $session->set("username", "test");
+        $session->set("username", "doe");
         $this->assertTrue($auth->isLoggedIn());
     }
 
@@ -58,10 +61,44 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
         $auth = new AuthHelper();
         $auth->setDi($this->di);
         $session = $this->di->get("session");
-        $session->set("username", "test");
+        $session->set("username", "admin");
         $this->assertTrue($auth->isAdmin());
 
-        $session->set("username", "test2");
+        $session->set("username", "doe");
         $this->assertFalse($auth->isAdmin());
+    }
+
+
+
+    /**
+     * Test authenticatedOnly()
+     *
+     * @runInSeparateProcess
+     */
+    public function testAuthenticatedOny()
+    {
+        $di = new \Anax\DI\DIFactoryConfig("MockDi.php");
+        $auth = new AuthHelper();
+        $auth->setDi($this->di);
+        $session = $this->di->get("session");
+        $session->set("username", "test2");
+        $auth->authenticatedOnly();
+    }
+
+
+
+    /**
+     * Test adminOnly()
+     *
+     * @runInSeparateProcess
+     */
+    public function testAdminOnly()
+    {
+        // $di = new \Anax\DI\DIFactoryConfig("MockDi.php");
+        $auth = new AuthHelper();
+        $auth->setDi($this->di);
+        $session = $this->di->get("session");
+        $session->set("username", "doe");
+        $auth->adminOnly();
     }
 }

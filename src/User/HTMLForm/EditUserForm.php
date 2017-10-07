@@ -12,6 +12,13 @@ use \Oenstrom\User\User;
 class EditUserForm extends FormModel
 {
     /**
+     * @var User $user the user being edited.
+     */
+    public $user;
+
+
+
+    /**
      * Constructor injects with DI container.
      *
      * @param Anax\DI\DIInterface $di a service container
@@ -111,13 +118,13 @@ class EditUserForm extends FormModel
         $user = new User();
         $user->setDb($this->di->get("db"));
 
-        if (!$isOldUsername && $user->usernameExists($username)) {
+        if (!$isOldUsername && $user->usernameExists($username) !== null) {
             $this->form->addOutput("Användarnamnet är upptaget.", "error");
             $this->di->get("response")->redirect("user/admin/users/update/{$this->user->id}");
             return false;
         }
 
-        if (!$isOldEmail && $user->emailExists($email)) {
+        if (!$isOldEmail && $user->emailExists($email) !== null) {
             $this->form->addOutput("E-postadressen är upptagen.", "error");
             $this->di->get("response")->redirect("user/admin/users/update/{$this->user->id}");
             return false;

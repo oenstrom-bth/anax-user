@@ -128,7 +128,7 @@ class UserController implements InjectionAwareInterface
      * @return String containing either just a URL or a complete image tag
      * @source https://gravatar.com/site/implement/images/php/
      */
-    private function getGravatar($email, $img = false, $size = 80, $default = 'mm', $rating = 'g', $atts = array())
+    public function getGravatar($email, $img = false, $size = 80, $default = 'mm', $rating = 'g', $atts = array())
     {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
