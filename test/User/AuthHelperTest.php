@@ -3,7 +3,7 @@
 namespace Oenstrom\User;
 
 /**
- * Test class for User
+ * Test class for AuthHelper
  */
 class AuthHelperTest extends \PHPUnit_Framework_TestCase
 {
@@ -75,7 +75,6 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
      */
     public function testAuthenticatedOny()
     {
-        $di = new \Anax\DI\DIFactoryConfig("MockDi.php");
         $auth = new AuthHelper();
         $auth->setDi($this->di);
         $session = $this->di->get("session");

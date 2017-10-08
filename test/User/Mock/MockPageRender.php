@@ -2,14 +2,13 @@
 
 namespace Oenstrom\User;
 
-// use Anax\Database\DatabaseQueryBuilder;
-
 /**
- * A DatabaseQueryBuilder mock class
+ * A PageRender mock class
  *
  * @SuppressWarnings("unused")
  */
-class MockPageRender {
+class MockPageRender
+{
     public function renderPage($data, $status = 200)
     {
         return true;

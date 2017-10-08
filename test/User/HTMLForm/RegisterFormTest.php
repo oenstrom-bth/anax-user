@@ -3,7 +3,7 @@
 namespace Oenstrom\User\HTMLForm;
 
 /**
- * Test class for User
+ * Test class for RegisterForm
  */
 class RegisterFormTest extends \PHPUnit_Framework_TestCase
 {

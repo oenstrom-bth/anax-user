@@ -3,7 +3,7 @@
 namespace Oenstrom\User\HTMLForm;
 
 /**
- * Test class for User
+ * Test class for EditUserForm
  */
 class EditUserFormTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,6 +34,6 @@ class EditUserFormTest extends \PHPUnit_Framework_TestCase
     public function testCallbackSubmit()
     {
         $editUserForm = new EditUserForm($this->di, 2);
-        $this->assertTrue(False !== $editUserForm->callbackSubmit());
+        $this->assertTrue(false !== $editUserForm->callbackSubmit());
     }
 }

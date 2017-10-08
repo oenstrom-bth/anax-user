@@ -3,7 +3,7 @@
 namespace Oenstrom\User;
 
 /**
- * Test class for User
+ * Test class for UserController
  */
 class UserControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -55,13 +55,30 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase
     public function testGetGravatar()
     {
         $userController = new UserController();
+        $gravUrl = "https://www.gravatar.com/avatar/2ad47faadafcb0262b9af4407399e686";
         $gravatar = $userController->getGravatar("olof.enstrom@gmail.com");
-        $this->assertEquals("https://www.gravatar.com/avatar/2ad47faadafcb0262b9af4407399e686?s=80&d=mm&r=g", $gravatar);
+        $this->assertEquals(
+            "https://www.gravatar.com/avatar/2ad47faadafcb0262b9af4407399e686?s=80&d=mm&r=g",
+            $gravatar
+        );
 
         $gravatarImg = $userController->getGravatar("olof.enstrom@gmail.com", true);
-        $this->assertEquals('<img src="https://www.gravatar.com/avatar/2ad47faadafcb0262b9af4407399e686?s=80&d=mm&r=g" alt="olof.enstrom@gmail.com" />', $gravatarImg);
+        $this->assertEquals(
+            '<img src="' . $gravUrl . '?s=80&d=mm&r=g" alt="olof.enstrom@gmail.com" />',
+            $gravatarImg
+        );
 
-        $gravatarAtts = $userController->getGravatar("olof.enstrom@gmail.com", true, 160, "mm", "g", ["title" => "test"]);
-        $this->assertEquals('<img src="https://www.gravatar.com/avatar/2ad47faadafcb0262b9af4407399e686?s=160&d=mm&r=g" alt="olof.enstrom@gmail.com" title="test" />', $gravatarAtts);
+        $gravatarAtts = $userController->getGravatar(
+            "olof.enstrom@gmail.com",
+            true,
+            160,
+            "mm",
+            "g",
+            ["title" => "test"]
+        );
+        $this->assertEquals(
+            '<img src="' . $gravUrl . '?s=160&d=mm&r=g" alt="olof.enstrom@gmail.com" title="test" />',
+            $gravatarAtts
+        );
     }
 }

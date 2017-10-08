@@ -3,7 +3,7 @@
 namespace Oenstrom\User;
 
 /**
- * Test class for User
+ * Test class for AdminController
  */
 class AdminControllerTest extends \PHPUnit_Framework_TestCase
 {
