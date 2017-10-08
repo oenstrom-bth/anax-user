@@ -20,10 +20,10 @@ class AdminControllerTest extends \PHPUnit_Framework_TestCase
     public function testAdminController()
     {
         $adminController = $this->di->get("adminController");
-        $adminController->getUsers();
-        $adminController->getPostNewUser();
-        $adminController->getPostEditUser(1);
-        $adminController->getDeleteUser(2);
         $this->assertInstanceOf("Oenstrom\User\AdminController", $adminController);
+        $this->assertNull($adminController->getUsers());
+        $this->assertNull($adminController->getPostNewUser());
+        $this->assertNull($adminController->getPostEditUser(1));
+        $this->assertNull($adminController->getDeleteUser(2));
     }
 }

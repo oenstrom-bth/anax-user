@@ -133,6 +133,7 @@ class EditUserForm extends FormModel
         if ($password != "") {
             $this->user->setPassword($password);
         }
+
         $this->user->username = $username;
         $this->user->email = $email;
         $this->user->save();

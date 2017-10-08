@@ -13,8 +13,6 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->di = new \Anax\DI\DIFactoryConfig("MockDi.php");
-        // $conf = include "MockDiConfig.php";
-        // $this->di = new \Anax\DI\DIFactoryConfig($conf);
     }
 
 

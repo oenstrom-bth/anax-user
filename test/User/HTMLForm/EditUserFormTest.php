@@ -5,7 +5,7 @@ namespace Oenstrom\User\HTMLForm;
 /**
  * Test class for User
  */
-class RegisterFormTest extends \PHPUnit_Framework_TestCase
+class EditUserFormTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test setup
@@ -22,18 +22,18 @@ class RegisterFormTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreateForm()
     {
-        $registerForm = new RegisterForm($this->di);
-        $this->assertInstanceOf("Oenstrom\User\HTMLForm\RegisterForm", $registerForm);
+        $editUserForm = new EditUserForm($this->di, 2);
+        $this->assertInstanceOf("Oenstrom\User\HTMLForm\EditUserForm", $editUserForm);
     }
 
 
 
     /**
-     * Test getLoggedInUser()
+     * Test callbackSubmit()
      */
     public function testCallbackSubmit()
     {
-        $registerForm = new RegisterForm($this->di);
-        $this->assertFalse($registerForm->callbackSubmit());
+        $editUserForm = new EditUserForm($this->di, 2);
+        $this->assertTrue(False !== $editUserForm->callbackSubmit());
     }
 }

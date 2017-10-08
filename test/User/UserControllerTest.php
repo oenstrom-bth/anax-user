@@ -18,15 +18,33 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase
 
 
     /**
-     * Test authenticatedOnly()
+     * Test userContoller
      *
      */
     public function testUserController()
     {
         $userController = $this->di->get("userController");
-        $userController->getPostRegister();
-        $userController->getPostLogin();
         $this->assertInstanceOf("Oenstrom\User\UserController", $userController);
+        $this->assertNull($userController->getPostRegister());
+        $this->assertNull($userController->getPostLogin());
+    }
+
+
+
+    /**
+     * Test getLogout()
+     *
+     * @runInSeparateProcess
+     */
+    public function testGetLogut()
+    {
+        $userController = $this->di->get("userController");
+        $session = $this->di->get("session");
+        session_start();
+        $session->set("username", "doe");
+        $this->assertTrue($session->has("username"));
+        $userController->getLogout();
+        $this->assertFalse($session->has("username"));
     }
 
 

@@ -12,6 +12,6 @@ namespace Oenstrom\User;
 class MockResponse {
     public function redirect($route)
     {
-        return true;
+        return $route;
     }
 }
