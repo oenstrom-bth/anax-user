@@ -1,11 +1,26 @@
 Revision history
 =================================
 
-v1.0.3 (2017-10-23)
+v1.0.5 (2017-10-23)
 ---------------------------------
 
 * Some small fixes/improvements
 * Added route "user/users"
+
+
+
+v1.0.4 (2017-10-08)
+---------------------------------
+
+* Fixed validation errors
+
+
+
+v1.0.3 (2017-10-08)
+---------------------------------
+
+* Fixed some unit tests.
+* Small src fix.
 
 
 
