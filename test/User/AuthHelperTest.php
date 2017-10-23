@@ -64,6 +64,9 @@ class AuthHelperTest extends \PHPUnit_Framework_TestCase
 
         $session->set("username", "doe");
         $this->assertFalse($auth->isAdmin());
+
+        $session->set("username", "awdawdawd");
+        $this->assertFalse($auth->isAdmin());
     }
 
 

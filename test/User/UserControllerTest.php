@@ -28,6 +28,10 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($userController->getPostRegister());
         $this->assertNull($userController->getPostLogin());
         $this->assertTrue($userController->getUsers());
+
+        $session = $this->di->get("session");
+        $session->set("username", "admin");
+        $this->assertNull($userController->getPostProfile());
     }
 
 
