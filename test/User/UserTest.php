@@ -91,4 +91,39 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->user->find("username", "admin");
         $this->assertTrue($this->user->isAdmin());
     }
+
+
+
+    /**
+     * Test getGravatar()
+     */
+    public function testGetGravatar()
+    {
+        $this->user->find("username", "doe");
+
+        $gravUrl = "https://www.gravatar.com/avatar/88b87698be0bc461f3cacf1f080929d5";
+        $gravatar = $this->user->getGravatar();
+        $this->assertEquals(
+            $gravUrl . "?s=80&d=mm&r=g",
+            $gravatar
+        );
+
+        $gravatarImg = $this->user->getGravatar(true);
+        $this->assertEquals(
+            '<img src="' . $gravUrl . '?s=80&d=mm&r=g" alt="user@user.com" />',
+            $gravatarImg
+        );
+
+        $gravatarAtts = $this->user->getGravatar(
+            true,
+            160,
+            "mm",
+            "g",
+            ["title" => "test"]
+        );
+        $this->assertEquals(
+            '<img src="' . $gravUrl . '?s=160&d=mm&r=g" alt="user@user.com" title="test" />',
+            $gravatarAtts
+        );
+    }
 }

@@ -22,9 +22,8 @@ class AuthHelper implements InjectionAwareInterface
      */
     public function getLoggedInUser()
     {
-        $session = $this->di->get("session");
-        $user    = new User();
-        $user->setDb($this->di->get("db"));
+        $session    = $this->di->get("session");
+        $user       = $this->di->get("user");
         return $user->find("username", $session->get("username"));
     }
 

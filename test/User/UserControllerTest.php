@@ -27,6 +27,7 @@ class UserControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf("Oenstrom\User\UserController", $userController);
         $this->assertNull($userController->getPostRegister());
         $this->assertNull($userController->getPostLogin());
+        $this->assertTrue($userController->getUsers());
     }
 
 

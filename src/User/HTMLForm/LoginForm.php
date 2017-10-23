@@ -63,8 +63,7 @@ class LoginForm extends FormModel
      */
     public function callbackSubmit()
     {
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
 
         $username  = $this->form->value("username");
         $password = $this->form->value("password");

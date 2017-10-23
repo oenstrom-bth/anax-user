@@ -93,8 +93,7 @@ class EditUserForm extends FormModel
      */
     public function hasItemDetails($id)
     {
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
         $user->find("id", $id);
         return $user;
     }
@@ -115,8 +114,7 @@ class EditUserForm extends FormModel
         $isOldEmail     = $this->user->email === $email;
         $isOldUsername  = $this->user->username === $username;
 
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
 
         if (!$isOldUsername && $user->usernameExists($username) !== null) {
             $this->form->addOutput("Användarnamnet är upptaget.", "error");

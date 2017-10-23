@@ -24,6 +24,12 @@ return [
             "path" => "logout",
             "callable" => ["userController", "getLogout"],
         ],
+        [
+            "info" => "Show all users",
+            "requestMethod" => "get",
+            "path" => "users",
+            "callable" => ["userController", "getUsers"],
+        ],
 
 
 

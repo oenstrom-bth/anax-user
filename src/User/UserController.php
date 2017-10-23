@@ -32,7 +32,7 @@ class UserController implements InjectionAwareInterface
      */
     public function getPostRegister()
     {
-        $title       = "Skapa konto";
+        $title       = "Sign up";
         $view        = $this->di->get("view");
         $pageRender  = $this->di->get("pageRender");
         $form        = new RegisterForm($this->di);
@@ -56,7 +56,7 @@ class UserController implements InjectionAwareInterface
      */
     public function getPostLogin()
     {
-        $title       = "Logga in";
+        $title       = "Sign in";
         $view        = $this->di->get("view");
         $pageRender  = $this->di->get("pageRender");
         $form        = new LoginForm($this->di);
@@ -87,13 +87,29 @@ class UserController implements InjectionAwareInterface
 
 
     /**
+     * Get all users.
+     */
+    public function getUsers()
+    {
+        $title       = "Users";
+        $view        = $this->di->get("view");
+        $pageRender  = $this->di->get("pageRender");
+        $user        = $this->di->get("user");
+
+        $view->add("user/user-list", ["users" => $user->findAll()]);
+        return $pageRender->renderPage(["title" => $title]);
+    }
+
+
+
+    /**
      * Handler with form to update an user profile.
      *
      * @return void
      */
     public function getPostProfile()
     {
-        $title       = "Din profil";
+        $title       = "Your profile";
         $view        = $this->di->get("view");
         $pageRender  = $this->di->get("pageRender");
         $auth        = $this->di->get("authHelper");

@@ -25,8 +25,7 @@ class AdminController implements InjectionAwareInterface
         $title      = "Alla användare";
         $view       = $this->di->get("view");
         $pageRender = $this->di->get("pageRender");
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user       = $this->di->get("user");
 
         $data = [
             "users" => $user->findAll(),
@@ -95,8 +94,7 @@ class AdminController implements InjectionAwareInterface
      */
     public function getDeleteUser($id)
     {
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
         $user->find("id", $id);
         if ($user->role !== "admin") {
             $user->delete();

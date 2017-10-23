@@ -87,8 +87,7 @@ class RegisterForm extends FormModel
         $username = $this->form->value("username");
         $email    = $this->form->value("email");
 
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
 
         if ($user->usernameExists($username) !== null) {
             $this->form->addOutput("Användarnamnet är upptaget.", "error");

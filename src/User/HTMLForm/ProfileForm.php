@@ -78,8 +78,7 @@ class ProfileForm extends FormModel
      */
     public function hasItemDetails($username)
     {
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
         $user->find("username", $username);
         return $user;
     }
@@ -98,8 +97,7 @@ class ProfileForm extends FormModel
         $email      = $this->form->value("email");
         $isOldEmail = $this->user->email === $email;
 
-        $user = new User();
-        $user->setDb($this->di->get("db"));
+        $user = $this->di->get("user");
 
         if (!$isOldEmail && $user->emailExists($email) !== null) {
             $this->form->addOutput("E-postadressen är upptagen.", "error");

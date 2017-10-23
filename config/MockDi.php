@@ -107,6 +107,14 @@ return [
                 return $obj;
             }
         ],
+        "user" => [
+            "shared" => false,
+            "callback" => function () {
+                $user = new \Oenstrom\User\User("User");
+                $user->setDb($this->get("db"));
+                return $user;
+            }
+        ],
         "adminController" => [
             "shared" => true,
             "callback" => function () {

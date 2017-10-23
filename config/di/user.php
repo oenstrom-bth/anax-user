@@ -5,6 +5,14 @@
 return [
     // Services to add to the container.
     "services" => [
+        "user" => [
+            "shared" => false,
+            "callback" => function () {
+                $user = new \Oenstrom\User\User("User");
+                $user->setDb($this->get("db"));
+                return $user;
+            }
+        ],
         "userController" => [
             "shared" => true,
             "callback" => function () {
